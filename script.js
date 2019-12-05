@@ -25,6 +25,13 @@ $("#city-form").submit(function(event) {
 				out += 'Widocznosc: <b>' + (data.visibility/1000) + 'km</b><br>';
 				out += 'Wiatr: <b>' + data.wind.speed + 'm/s</b><br>';
 				out += 'Zachmurzenie: <b>' + data.clouds.all + '%</b><br>';
+				function changeweather(){ 
+					if (data.weather[0].description == 'bezchmurnie')
+						document.getElementById("demo").innerHTML='mozna';
+					else document.getElementById("demo").innerHTML='nie';
+				}
+				document.getElementById("demo").innerHTML=changeweather();;
+				out += 'Czy można lowic: <b>' +changeweather()+'</b>';
 				console.log(data);
 			$('#weather').html(out);
 		});
